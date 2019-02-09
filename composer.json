@@ -12,6 +12,11 @@
 			"role": "Developer"
 		}
 	],
+	"autoload": {
+        "psr-4": {
+            "alexia\\mar\\": "classes"
+        }
+    },
 	"require": {
 		"php": ">=5.4.0"
 	}

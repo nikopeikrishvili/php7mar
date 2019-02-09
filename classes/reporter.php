@@ -69,16 +69,9 @@ class reporter {
 		}
 		$this->projectPath = $projectPath;
 
-		$reportFolder = main::getRealPath($reportFolder);
-		if ($reportFolder !== false) {
-			$this->reportFolder = $reportFolder;
-		} else {
-			$this->reportFolder = PHP7MAR_DIR.DIRECTORY_SEPARATOR.'reports';
-		}
-		$this->fullFilePath = $this->reportFolder.DIRECTORY_SEPARATOR.date('Y-m-d H.i.s ').basename($this->projectPath, '.php').".md";
 
-		$this->file = fopen($this->fullFilePath, 'w+');
-		register_shutdown_function([$this, 'onShutdown']);
+	    $this->reportFolder = PHP7MAR_DIR.'/..'.DIRECTORY_SEPARATOR.'reports';
+		$this->fullFilePath = $this->reportFolder.DIRECTORY_SEPARATOR.date('Y-m-d H.i.s ').basename($this->projectPath, '.php').".md";
 
 		$this->add(date('c', $this->startTime), 0, 1);
 		$this->add("Scanning {$this->projectPath}", 0, 1);
@@ -96,9 +89,7 @@ class reporter {
 	 */
 	public function add($line, $nlBefore = 0, $nlAfter = 0) {
 		$output = str_repeat("\n", $nlBefore).$line.str_repeat("\n", $nlAfter);
-		if (fwrite($this->file, $output) === false) {
-			die("There was an error attempting to write to the report file.\n".$this->fullFilePath."\n");
-		}
+		file_put_contents($this->fullFilePath,$output,FILE_APPEND);
 	}
 
 	/**
@@ -151,14 +142,5 @@ class reporter {
 		return $this->fullFilePath;
 	}
 
-	/**
-	 * Handle any file clean up on shutdown.
-	 *
-	 * @access	public
-	 * @return	void
-	 */
-	public function onShutdown() {
-		fclose($this->file);
-	}
 }
 ?>

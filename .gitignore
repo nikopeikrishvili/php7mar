@@ -6,6 +6,7 @@
 .idea
 *.sublime-project
 *.sublime-workspace
+.vscode/*
 /reports/*.txt
 /reports/*.md
 vendor

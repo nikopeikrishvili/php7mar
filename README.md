@@ -1,3 +1,7 @@
+# Fork notes
+This is a fork repo of  https://github.com/Alexia/php7mar, added exclude folders option, original repository developer was not responsible ro make this option, so this option is implemented here.
+Thanks for original repo developer!!!
+
 # Introduction
 #### What is PHP 7 Migration Assistant Report(MAR)?
 PHP 7 MAR, or just "php7mar", is a command line utility to generate reports on existing PHP 5 code to assist developers in porting their code quickly to PHP 7.  It will run against invididual files or entire project folders.  Reports contain line numbers, issues noted, and suggested fixes along with documentation links.
@@ -19,8 +23,8 @@ Very poorly styled code will not parse well, but assuming there is at least some
 First, start by downloading or cloning this repository.  It does not need to be placed inside the folder containing the source code.
 
 To begin, type on the command line:
-
-	php mar.php
+	`composer install`
+	`php mar.php`
 
 This will produce a list of available arguments and switches.
 
@@ -51,6 +55,11 @@ Give a try, use the included `testcases.php` to generate a report:
 	Path to the folder to save the report.
 	The location to save the final report.  By default this saves into the reports/ folder inside the php7mar folder.  A fully qualified path is recommended.  Relative paths will be based off the php7mar folder.
 		*Example: -r="/path/to/folder"*
+```
+**-e**
+```
+	Path to the folder to exclude from report.
+		*Example: -e="/path/to/vendor"*
 ```
 
 **-t**
