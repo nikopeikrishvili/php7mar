@@ -1,6 +1,6 @@
 # Fork notes
 This is a fork repo of  https://github.com/Alexia/php7mar, added exclude folders option, original repository developer was not responsible ro make this option, so this option is implemented here.
-Thanks for original repo developer!!!
+Thanks for original repo developer!!! @Alexia
 
 # Introduction
 #### What is PHP 7 Migration Assistant Report(MAR)?
